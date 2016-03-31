@@ -11,7 +11,7 @@ public class EdgeWeightedDirectedGraph {
 	private int E;
 	private Bag<DirectedEdge>[] adj;
 	private int[] indegree;
-	private DirectedEdge[] edges = new DirectedEdge[600];
+	private DirectedEdge[] edges = new DirectedEdge[5000];
 	
 	public EdgeWeightedDirectedGraph(int V){
 		this.V = V;
@@ -29,9 +29,9 @@ public class EdgeWeightedDirectedGraph {
 		for (int i = 0; i < E; i++){
 			String line = reader.readLine().trim();
 			if (line == null || "".equals(line)) continue;
-			String[] nodes = line.split("\\s+");
-			int from = Integer.parseInt(nodes[0]), to = Integer.parseInt(nodes[1]);
-			double weight = Double.parseDouble(nodes[2]);
+			String[] nodes = line.split("\\s+|,");
+			int from = Integer.parseInt(nodes[1]), to = Integer.parseInt(nodes[2]);
+			double weight = Double.parseDouble(nodes[3]);
 			DirectedEdge edge = new DirectedEdge(from, to, weight);
 			edges[i] = edge;
 			addEdge(edge);
