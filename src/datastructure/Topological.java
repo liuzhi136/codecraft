@@ -9,6 +9,7 @@ public class Topological {
 	private Iterable<Integer> order;
 	
 	public Topological(EdgeWeightedDirectedGraph g){
+		//判断该有向图是否有环
 		EdgeWeightedDirectedCycle cyclefinder = new EdgeWeightedDirectedCycle(g);
 		if (!cyclefinder.hasCycle()){
 			DepthFirstOrder dfs = new DepthFirstOrder(g);
