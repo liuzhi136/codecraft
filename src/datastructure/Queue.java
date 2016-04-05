@@ -1,4 +1,4 @@
-package datastructure;
+package com.routesearch.route;
 
 import java.util.Iterator;
 
@@ -7,7 +7,6 @@ public class Queue<T> implements Iterable<T>{
 	private int N;
 	private Node first;
 	private Node last;
-	
 	private class Node{
 		T item;
 		Node next;
@@ -36,6 +35,13 @@ public class Queue<T> implements Iterable<T>{
 	
 	public boolean isEmpty(){
 		return first == null;
+	}
+	
+	public void addAll(Iterable<T> edges){
+		if (edges == null) return;
+		for (T e : edges){
+			this.enqueue(e);
+		}
 	}
 	
 	public static void main(String[] args) {

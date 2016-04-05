@@ -1,4 +1,4 @@
-package datastructure;
+package com.routesearch.route;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -13,11 +13,15 @@ public class EdgeWeightedDirectedCycle {
 	private boolean[] onStack;
 	
 	public EdgeWeightedDirectedCycle(EdgeWeightedDirectedGraph g){
-		onStack = new boolean[g.V()];
-		edgeTo = new DirectedEdge[g.V()];
-		marked = new boolean[g.V()];
-		for (int v = 0; v < g.V(); v++)
+		int[] vertices = g.Vertices(); int len = vertices.length;
+		onStack = new boolean[len];
+		edgeTo = new DirectedEdge[len];
+		marked = new boolean[len];
+		for (int v : vertices){
+			if (v == -1) continue;
 			if (!marked[v]) dfs(g, v);
+		}
+			
 	}
 	private void dfs(EdgeWeightedDirectedGraph g, int v){
 		onStack[v] = true;
@@ -61,7 +65,6 @@ public class EdgeWeightedDirectedCycle {
 					System.out.print(e + " ");
 				}
 			}
-			
 		}
 	}
 
